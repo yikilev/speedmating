@@ -73,16 +73,18 @@ class QuestionsActivity : ComponentActivity(){
         bt_send.setOnClickListener{
             var questionNumber = findViewById<TextView>(R.id.question_number)
             if(questionCounter < 3) {
-                updateQuestion()
-                restartTimer(targetTimeInMillis)
-
                 var answer = findViewById<EditText>(R.id.answer)
                 answers.put(questionCounter.toString(), answer.text.toString())
+                questionCounter++
+                updateQuestion()
+                restartTimer(targetTimeInMillis)
 
 
 
             }
             else if(questionCounter == 3){
+                var answer = findViewById<EditText>(R.id.answer)
+                answers.put(questionCounter.toString(), answer.text.toString())
                 val questionsRef = databaseReference.child("connections").child(mainConnectionId).child("answers").child(mainPlayerId)
                 questionsRef.setValue(answers)
 
@@ -152,6 +154,8 @@ class QuestionsActivity : ComponentActivity(){
 
             override fun onFinish() {
                 if (questionCounter < 3) {
+                    var answer = findViewById<EditText>(R.id.answer)
+                    answers.put(questionCounter.toString(), answer.text.toString())
                     questionCounter++
                     updateTimerText(0)
                     restartTimer(targetTimeInMillis)
@@ -159,6 +163,8 @@ class QuestionsActivity : ComponentActivity(){
                 }
                 else if(questionCounter == 3){
 
+                    var answer = findViewById<EditText>(R.id.answer)
+                    answers.put(questionCounter.toString(), answer.text.toString())
                     val questionsRef = databaseReference.child("connections").child(mainConnectionId).child("answers").child(mainPlayerId)
                     questionsRef.setValue(answers)
                 }
