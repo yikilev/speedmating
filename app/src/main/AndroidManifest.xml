@@ -13,9 +13,8 @@
         android:theme="@style/Theme.SpeedMating"
         tools:targetApi="31">
         <activity
-            android:theme="@style/Theme.AppCompat"
             android:name=".QuestionsActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

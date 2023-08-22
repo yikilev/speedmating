@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.SpeedMating" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.SpeedMating" parent="Theme.MaterialComponents.Light.Bridge"/>
+    <style name="Theme.QuestionsTheme" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowDisablePreview">true</item>
+    </style>
 </resources>

@@ -28,40 +28,52 @@
             android:gravity="center"
             android:layout_marginTop="64dp"
             android:textColor="@color/black"/>
+
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="64dp">
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cn_lang"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    app:cardCornerRadius="40dp">
+                    app:cardCornerRadius="40dp"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    >
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/flag_china">
 
                     </ImageView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/gb_lang"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     app:cardCornerRadius="40dp"
-                    android:layout_marginStart="16dp">
+                    android:layout_marginStart="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/flag_english">
 
                     </ImageView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/fr_lang"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     app:cardCornerRadius="40dp"
@@ -72,49 +84,63 @@
                         android:background="@drawable/flag_french">
 
                     </ImageView>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="16dp">
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/ger_lang"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    app:cardCornerRadius="40dp">
+                    app:cardCornerRadius="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/flag_germany">
 
                     </ImageView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/ru_lang"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     app:cardCornerRadius="40dp"
-                    android:layout_marginStart="16dp">
+                    android:layout_marginStart="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/flag_russian">
 
                     </ImageView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/sp_lang"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     app:cardCornerRadius="40dp"
-                    android:layout_marginStart="16dp">
+                    android:layout_marginStart="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/flag_spanish">
                     </ImageView>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
+
+
 
 
         <androidx.cardview.widget.CardView
@@ -122,7 +148,10 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp">
+            android:layout_marginTop="64dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground">
             <Button
                 android:id="@+id/bt_start"
                 android:layout_width="wrap_content"

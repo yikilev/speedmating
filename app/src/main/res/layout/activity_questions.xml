@@ -17,13 +17,15 @@
             android:textStyle="bold"
             android:gravity="center">
         </TextView>
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:cardCornerRadius="40dp">
+            app:cardCornerRadius="20dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/main_red">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -33,7 +35,8 @@
                     android:layout_height="wrap_content"
                     android:text="Тема:"
                     android:gravity="center"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
                 <TextView
                     android:layout_width="match_parent"
@@ -41,11 +44,12 @@
                     android:text="Фильмы"
                     android:textSize="18sp"
                     android:gravity="center"
-                    android:layout_marginTop="16dp">
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black">
                 </TextView>
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
         <LinearLayout
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
@@ -60,10 +64,11 @@
 
             </ImageView>
             <TextView
+                android:id="@+id/timerTextView"
                 android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0:30"
+                android:text="0:60"
                 android:textSize="18sp"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/black">
@@ -77,6 +82,7 @@
             android:orientation="vertical"
             android:layout_marginTop="16dp">
             <TextView
+                android:id="@+id/question_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Вопрос 1:"
@@ -85,6 +91,7 @@
                 android:textSize="20sp">
             </TextView>
             <TextView
+                android:id="@+id/question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Какой последний фильм, который ты посмотрел(а), тебе понравился?"
@@ -92,34 +99,43 @@
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
                 android:textStyle="bold"
-                android:layout_marginTop="16dp">
-                
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp">
+
             </TextView>
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                app:cardCornerRadius="40dp">
+                app:cardCornerRadius="20dp"
+                app:strokeColor="@color/main_red"
+                app:strokeWidth="1dp">
+
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="250dp">
-                </EditText>
-            </androidx.cardview.widget.CardView>
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:background="@android:color/transparent"
+                    android:padding="5dp"
+                    android:id="@+id/answer"></EditText>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="40dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp">
-                <TextView
+                <Button
+                    android:id="@+id/bt_send_answer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Ответить"
@@ -128,11 +144,11 @@
                     android:textSize="18sp"
                     android:padding="10dp">
 
-                </TextView>
-            </androidx.cardview.widget.CardView>
+                </Button>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
-    </LinearLayout>
+   </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
