@@ -13,6 +13,7 @@ import androidx.activity.ComponentActivity
 import android.os.CountDownTimer
 import android.widget.Button
 import android.app.ProgressDialog
+import android.content.Intent
 import android.widget.EditText
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -78,6 +79,7 @@ class QuestionsActivity : ComponentActivity(){
                 questionCounter++
                 updateQuestion()
                 restartTimer(targetTimeInMillis)
+                answer.setText("")
 
 
 
@@ -87,6 +89,34 @@ class QuestionsActivity : ComponentActivity(){
                 answers.put(questionCounter.toString(), answer.text.toString())
                 val questionsRef = databaseReference.child("connections").child(mainConnectionId).child("answers").child(mainPlayerId)
                 questionsRef.setValue(answers)
+
+                val progressDialog = ProgressDialog(this@QuestionsActivity)
+                progressDialog.setTitle("Ждём собеседника")
+                progressDialog.setMessage("Собеседник ещё отвечает на вопросы")
+                progressDialog.show()
+
+                databaseReference.child("/connections/$mainConnectionId/answers/$matePlayerId").addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if(snapshot.hasChildren()){
+                            progressDialog.dismiss()
+                            val intent = Intent(this@QuestionsActivity, AnswersActivity::class.java)
+
+                            databaseReference.child("/connections/$mainConnectionId/answers/$matePlayerId").removeEventListener(this)
+
+                            intent.putExtra("conId", mainConnectionId)
+                            intent.putExtra("curPlayerId", mainPlayerId)
+                            intent.putExtra("matePlayerId", mainMateId)
+                            startActivity(intent)
+
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                })
+
 
             }
 
@@ -160,6 +190,7 @@ class QuestionsActivity : ComponentActivity(){
                     updateTimerText(0)
                     restartTimer(targetTimeInMillis)
                     updateQuestion()
+                    answer.setText("")
                 }
                 else if(questionCounter == 3){
 
@@ -167,6 +198,10 @@ class QuestionsActivity : ComponentActivity(){
                     answers.put(questionCounter.toString(), answer.text.toString())
                     val questionsRef = databaseReference.child("connections").child(mainConnectionId).child("answers").child(mainPlayerId)
                     questionsRef.setValue(answers)
+                    val progressDialog = ProgressDialog(this@QuestionsActivity)
+                    progressDialog.setTitle("Ждём собеседника")
+                    progressDialog.setMessage("Собеседник ещё отвечает на вопросы")
+                    progressDialog.show()
                 }
             }
         }

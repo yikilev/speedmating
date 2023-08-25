@@ -43,93 +43,6 @@ class MainActivity : ComponentActivity() {
 
     private var mainConnectionId = ""
 
-    fun onStartClick(){
-
-        val playerName = "mate"
-        val playerId = (System.currentTimeMillis()).toString()
-        var status = "matching"
-        var connectionId = ""
-        FirebaseApp.initializeApp(this)
-
-        val progressDialog = ProgressDialog(this@MainActivity)
-        progressDialog.setTitle("Поиск собеседника")
-        progressDialog.setMessage("Ищем свободного собеседника")
-        progressDialog.show()
-
-        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance()
-            .getReferenceFromUrl("https://speedmating-85fb4-default-rtdb.firebaseio.com/")
-        var otherMateFound: Boolean = false
-
-        databaseReference.child("connections").addValueEventListener(object : ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (otherMateFound) {
-                    if (snapshot.hasChildren()) {
-                        for (connections in snapshot.children) {
-                            val conId = connections.key?.toLongOrNull()
-                            var getMatesCount = connections.childrenCount
-
-                            if (status.equals("waiting")) {
-                                if (getMatesCount.toInt() == 2) {
-
-                                    var playerFound = false
-
-                                    for (players in connections.children) {
-                                        val getPlayerId = players.key
-
-                                        if (getPlayerId.equals(playerId)) {
-                                            playerFound = true
-                                        } else if (playerFound) {
-                                            val getOtherPlayerName =
-                                                players.child("player_name")
-                                                    .getValue(String::class.java)
-                                            val otherId = players.key
-
-                                            connectionId = conId.toString()
-
-                                            otherMateFound = true
-//                                            databaseReference.child("answers")
-//                                                .child("connectionId")
-//                                                .addValueEventListener(answersEventListener)
-
-                                            if (progressDialog.isShowing()) {
-                                                progressDialog.dismiss()
-                                            }
-
-                                        }
-                                    }
-
-                                }
-                            }
-
-                        }
-
-
-                    } else {
-                        val conId = (System.currentTimeMillis()).toString()
-                        val playerReference: DatabaseReference = databaseReference
-                            .child(connectionId)
-                            .child(playerId)
-                            .child("player name*")
-
-                        playerReference.setValue(playerName)
-
-                        status = "waiting"
-                    }
-
-
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Обработка ошибок
-            }
-        })
-
-
-    }
-
-
     fun testCon(){
 
         FirebaseApp.initializeApp(this)
@@ -159,7 +72,7 @@ class MainActivity : ComponentActivity() {
                                             curUser = true
                                         }
                                         else{
-                                            var mateId = players.key.toString()
+                                            mateId = players.key.toString()
 
                                         }
                                     }
