@@ -26,9 +26,8 @@ class AnswersActivity: ComponentActivity() {
 //    private var answers = mutableListOf<String>()
 //    private var questions = mutableListOf<String>()
 
-//    private val answers: MutableList<String> = mutableListOf()
-//
-//    private val questions: MutableList<String> = mutableListOf()
+    private val answers: MutableList<String> = mutableListOf()
+    private val questions: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val conId = intent.getStringExtra("conId").toString()
@@ -62,9 +61,13 @@ class AnswersActivity: ComponentActivity() {
                 // Обработка полученного значения
                 for(answer in dataSnapshot.children){
                     var value = answer.value.toString()
-//                    answers.add(value)
+                    answers.add(value)
 
                 }
+                a1.setText(answers[0].toString())
+                a2.setText(answers[1].toString())
+                a3.setText(answers[2].toString())
+                reference.removeEventListener(this)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -79,11 +82,15 @@ class AnswersActivity: ComponentActivity() {
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Обработка полученного значения
-                for(answer in dataSnapshot.children){
-                    var value = answer.value.toString()
-//                    questions.add(value)
+                for(question in dataSnapshot.children){
+                    var value = question.value.toString()
+                    questions.add(value)
 
                 }
+                qu1.setText(questions[0].toString())
+                qu2.setText(questions[1].toString())
+                qu3.setText(questions[2].toString())
+                reference.removeEventListener(this)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -91,16 +98,6 @@ class AnswersActivity: ComponentActivity() {
                 println("Ошибка: ${databaseError.message}")
             }
         })
-
-//        qu1.setText(questions[0].toString())
-//        qu2.setText(questions[1].toString())
-//        qu3.setText(questions[2].toString())
-//
-//        a1.setText(answers[0].toString())
-//        a2.setText(answers[1].toString())
-//        a3.setText(answers[2].toString())
-
-
 
     }
 

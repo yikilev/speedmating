@@ -57,6 +57,9 @@ class QuestionsActivity : ComponentActivity(){
         spannableString.setSpan(ForegroundColorSpan(Color.parseColor("#FF565E")), 5, 6, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
         title.text = spannableString
 
+        var theme = findViewById<TextView>(R.id.theme)
+        theme.setText("Этот юзер: " + mainPlayerId.toString() + "Оппонент:" + matePlayerId.toString())
+
         var bt_send = findViewById<Button>(R.id.bt_send_answer)
 
 
@@ -103,6 +106,7 @@ class QuestionsActivity : ComponentActivity(){
 
                             databaseReference.child("/connections/$mainConnectionId/answers/$matePlayerId").removeEventListener(this)
 
+
                             intent.putExtra("conId", mainConnectionId)
                             intent.putExtra("curPlayerId", mainPlayerId)
                             intent.putExtra("matePlayerId", mainMateId)
@@ -147,6 +151,8 @@ class QuestionsActivity : ComponentActivity(){
                 var questionView = findViewById<TextView>(R.id.question)
                 questionView.text = questionValue.toString()
                 questionNumber.setText("Вопрос " + questionCounter.toString())
+
+                reference.removeEventListener(this)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

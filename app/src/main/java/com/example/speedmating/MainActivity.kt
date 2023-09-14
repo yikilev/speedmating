@@ -106,6 +106,7 @@ class MainActivity : ComponentActivity() {
                                         val getMateId = players.key.toString()
                                         mainConnectionId = conId
                                         mateFound = true
+                                        mainMateId = getMateId
 
                                         addQuestions()
 
@@ -118,7 +119,7 @@ class MainActivity : ComponentActivity() {
 
                                         intent.putExtra("conId", mainConnectionId)
                                         intent.putExtra("curPlayerId", mainPlayerId)
-                                        intent.putExtra("otherPlayerId", mainMateId)
+                                        intent.putExtra("matePlayerId", mainMateId)
                                         startActivity(intent)
 
                                         break

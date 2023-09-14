@@ -20,7 +20,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="150dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:cardCornerRadius="20dp"
@@ -39,6 +39,7 @@
                     android:textColor="@color/black">
                 </TextView>
                 <TextView
+                    android:id="@+id/theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Фильмы"
